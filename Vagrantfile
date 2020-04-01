@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
       if svn info /usr/ports; then
         svn update /usr/ports
       else
-        svn checkout https://svn.freebsd.org/ports/head/ /usr/ports
+        svn checkout https://svn.freebsd.org/ports/head /usr/ports
       fi
       grep "DEVELOPER=yes" /etc/make.conf >/dev/null 2>&1 || echo "DEVELOPER=yes" >> /etc/make.conf
     SHELL
