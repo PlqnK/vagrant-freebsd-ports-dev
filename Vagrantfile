@@ -6,6 +6,8 @@ VM_NAME ||= "freebsd-ports-dev"
 Vagrant.configure("2") do |config|
   config.vm.define VM_NAME do |subconfig|
     subconfig.vm.box = "freebsd/FreeBSD-11.3-STABLE"
+    subconfig.vm.guest = :freebsd
+    subconfig.vm.hostname = VM_NAME
     subconfig.vm.synced_folder ".", "/vagrant", disabled: true
     subconfig.vm.provider "libvirt" do |libvirt|
       libvirt.default_prefix = ""
