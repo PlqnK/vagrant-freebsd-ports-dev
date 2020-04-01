@@ -30,7 +30,9 @@ Vagrant.configure("2") do |config|
       else
         svn checkout https://svn.freebsd.org/ports/head /usr/ports
       fi
-      grep "DEVELOPER=yes" /etc/make.conf >/dev/null 2>&1 || echo "DEVELOPER=yes" >> /etc/make.conf
+      for option in "DEVELOPER=yes" "MAKE_JOBS_NUMBER=4"; do
+        grep "${option}" /etc/make.conf >/dev/null 2>&1 || echo "${option}" >> /etc/make.conf
+      done
     SHELL
     subconfig.ssh.shell = "sh"
   end
